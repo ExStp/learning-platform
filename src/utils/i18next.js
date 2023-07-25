@@ -13,6 +13,11 @@ i18next
 					title: "This is a chat app",
 					btn: {
 						"change theme": "Change theme",
+						increment: "increment",
+						decrement: "decrement",
+					},
+					input: {
+						"send message": "send message",
 					},
 				},
 			},
@@ -21,6 +26,11 @@ i18next
 					title: 'Это приложение "чат"',
 					btn: {
 						"change theme": "Сменить тему",
+						increment: "прибавить",
+						decrement: "отнять",
+					},
+					input: {
+						"send message": "отправить сообщение",
 					},
 				},
 			},
