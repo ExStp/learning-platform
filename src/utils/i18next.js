@@ -11,11 +11,17 @@ i18next
 			en: {
 				translation: {
 					title: "This is a chat app",
+					btn: {
+						colorTheme: "Change theme",
+					},
 				},
 			},
 			ru: {
 				translation: {
 					title: 'Это приложение "чат"',
+					btn: {
+						colorTheme: "Сменить тему",
+					},
 				},
 			},
 		},

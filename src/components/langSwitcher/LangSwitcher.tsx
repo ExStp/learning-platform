@@ -14,10 +14,8 @@ export function LangSwitcher() {
 			sx={{
 				width: "fit-content",
 			}}
-			color="neutral"
 			disabled={false}
 			placeholder="Язык"
-			variant="outlined"
 			onChange={handleChange}
 			value={i18n.language}
 		>
