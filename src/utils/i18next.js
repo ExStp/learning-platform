@@ -6,13 +6,13 @@ i18next
 	.use(initReactI18next)
 	.use(LanguageDetector)
 	.init({
-		fallbackLng: "ru",
+		fallbackLng: "en",
 		resources: {
 			en: {
 				translation: {
 					title: "This is a chat app",
 					btn: {
-						colorTheme: "Change theme",
+						"change theme": "Change theme",
 					},
 				},
 			},
@@ -20,7 +20,7 @@ i18next
 				translation: {
 					title: 'Это приложение "чат"',
 					btn: {
-						colorTheme: "Сменить тему",
+						"change theme": "Сменить тему",
 					},
 				},
 			},

@@ -16,7 +16,7 @@ export function ColorThemeToggle() {
 
 	return (
 		<Button variant="outlined" onClick={handleClick}>
-			{t("btn.colorTheme")}
+			{t("btn.change theme")}
 		</Button>
 	);
 }
