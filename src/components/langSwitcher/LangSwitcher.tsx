@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export function LangSwitcher() {
 	const { i18n } = useTranslation();
 
-	const handleChange = (_event: React.ChangeEvent<{ value: unknown }>, newValue: string) => {
+	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
 		i18n.changeLanguage(newValue);
 	};
 
@@ -16,8 +16,6 @@ export function LangSwitcher() {
 			}}
 			disabled={false}
 			placeholder="Язык"
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-expect-error
 			onChange={handleChange}
 			value={i18n.language}
 		>

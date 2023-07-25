@@ -4,11 +4,17 @@ import App from "./App.tsx";
 import { StyledEngineProvider } from "@mui/joy/styles";
 
 import "./utils/i18next.js";
+import { setupStore } from "./app/store.ts";
+import { Provider } from "react-redux";
+
+const store = setupStore();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<StyledEngineProvider injectFirst>
-			<App />
-		</StyledEngineProvider>
+		<Provider store={store}>
+			<StyledEngineProvider injectFirst>
+				<App />
+			</StyledEngineProvider>
+		</Provider>
 	</React.StrictMode>
 );
