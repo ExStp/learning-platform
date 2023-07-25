@@ -4,19 +4,15 @@ import { useTranslation } from "react-i18next";
 
 export function ColorThemeToggle() {
 	const { mode, setMode } = useColorScheme();
-    const { t } = useTranslation();
+	const { t } = useTranslation();
 
 	function handleClick() {
-		if (mode === "light") {
-			setMode("dark");
-		} else {
-			setMode("light");
-		}
+		setMode(mode === "light" ? "dark" : "light");
 	}
 
 	return (
 		<Button variant="outlined" onClick={handleClick}>
-			{t("btn.colorTheme")}
+			{t("btn.change theme")}
 		</Button>
 	);
 }

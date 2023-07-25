@@ -3,9 +3,9 @@ import Option from "@mui/joy/Option";
 import { useTranslation } from "react-i18next";
 
 export function LangSwitcher() {
-	const { t, i18n } = useTranslation();
+	const { i18n } = useTranslation();
 
-	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+	const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
 		i18n.changeLanguage(newValue);
 	};
 
@@ -16,6 +16,7 @@ export function LangSwitcher() {
 			}}
 			disabled={false}
 			placeholder="Язык"
+			// @ts-ignore
 			onChange={handleChange}
 			value={i18n.language}
 		>

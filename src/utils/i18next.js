@@ -12,7 +12,12 @@ i18next
 				translation: {
 					title: "This is a chat app",
 					btn: {
-						colorTheme: "Change theme",
+						"change theme": "Change theme",
+						increment: "increment",
+						decrement: "decrement",
+					},
+					input: {
+						"send message": "send message",
 					},
 				},
 			},
@@ -20,7 +25,12 @@ i18next
 				translation: {
 					title: 'Это приложение "чат"',
 					btn: {
-						colorTheme: "Сменить тему",
+						"change theme": "Сменить тему",
+						increment: "прибавить",
+						decrement: "отнять",
+					},
+					input: {
+						"send message": "отправить сообщение",
 					},
 				},
 			},
