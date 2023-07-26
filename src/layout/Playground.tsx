@@ -1,6 +1,4 @@
 import Box from "@mui/joy/Box";
-import { LangSwitcher } from "../components/langSwitcher/LangSwitcher";
-import { ColorThemeToggle } from "../components/colorThemeToggle/ColorThemeToggle";
 import Input from "@mui/joy/Input";
 import Button from "@mui/joy/Button";
 import { useTranslation } from "react-i18next";
@@ -18,8 +16,6 @@ export function Playground() {
 	return (
 		<Box sx={{ height: "fit-content" }}>
 			<Stack spacing={2}>
-				<LangSwitcher />
-				<ColorThemeToggle />
 				<p className="read-the-docs">{t("title")}</p>
 				<Input
 					color="primary"

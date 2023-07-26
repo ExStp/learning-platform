@@ -1,4 +1,4 @@
-interface PaletteColors {
+export interface IPaletteColors {
 	[key: string]: string;
 }
 
@@ -6,8 +6,8 @@ interface Palette {
 	background?: {
 		body?: string;
 	};
-	primary?: PaletteColors;
-	neutral?: PaletteColors;
+	primary?: IPaletteColors;
+	neutral?: IPaletteColors;
 	// Другие свойства палитры, если есть
 }
 
