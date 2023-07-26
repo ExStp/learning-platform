@@ -1,8 +1,10 @@
+import themeSlice from "./slices/theme";
 import counterSlice from "./slices/counter";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
 	counterSlice,
+	themeSlice,
 });
 
 export function setupStore() {

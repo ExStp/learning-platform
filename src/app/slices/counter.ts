@@ -5,13 +5,13 @@ interface CounterState {
 	value: number;
 }
 
-const initialState: CounterState = {
+const initialCounter: CounterState = {
 	value: 1,
 };
 
 export const counterSlice = createSlice({
 	name: "counter",
-	initialState,
+	initialState: initialCounter,
 	reducers: {
 		increment: (state) => {
 			state.value += 1;

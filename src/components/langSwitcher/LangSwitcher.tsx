@@ -1,11 +1,12 @@
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import { useTranslation } from "react-i18next";
+import { FC } from "react";
 
-export function LangSwitcher() {
+export const LangSwitcher: FC = () => {
 	const { i18n } = useTranslation();
 
-	const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
+	const handleChange = (_event: React.ChangeEvent<HTMLSelectElement>, newValue: string) => {
 		i18n.changeLanguage(newValue);
 	};
 
@@ -16,7 +17,7 @@ export function LangSwitcher() {
 			}}
 			disabled={false}
 			placeholder="Язык"
-			// @ts-ignore
+			// @ts-expect-error unknown
 			onChange={handleChange}
 			value={i18n.language}
 		>
@@ -24,4 +25,4 @@ export function LangSwitcher() {
 			<Option value="en">EN</Option>
 		</Select>
 	);
-}
+};

@@ -1,13 +1,16 @@
-import { theme } from "./assets/theme/theme";
 import { CssVarsProvider } from "@mui/joy/styles";
 import GlobalStyles from "@mui/joy/GlobalStyles";
 import CssBaseline from "@mui/joy/CssBaseline";
 import Box from "@mui/joy/Box";
 import { Playground } from "./layout/Playground";
+import { useAppSelector } from "./app/hooks/redux";
+import { extendTheme } from "@mui/joy/styles";
 
 function App() {
+	const theme = useAppSelector((state) => state.themeSlice);
+
 	return (
-		<CssVarsProvider theme={theme}>
+		<CssVarsProvider theme={extendTheme(theme)}>
 			<GlobalStyles
 				styles={{
 					"[data-feather], .feather": {
@@ -20,7 +23,14 @@ function App() {
 				}}
 			/>
 			<CssBaseline />
-			<Box sx={{ display: "flex", minHeight: "100dvh", justifyContent: 'center', alignItems: 'center' }}>
+			<Box
+				sx={{
+					display: "flex",
+					minHeight: "100dvh",
+					justifyContent: "center",
+					alignItems: "center",
+				}}
+			>
 				<Playground />
 			</Box>
 		</CssVarsProvider>

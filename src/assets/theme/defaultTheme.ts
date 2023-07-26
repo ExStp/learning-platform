@@ -1,6 +1,4 @@
-import { extendTheme } from "@mui/joy/styles";
-
-export const theme = extendTheme({
+export const defaultTheme = {
 	colorSchemes: {
 		light: {
 			palette: {
@@ -77,12 +75,9 @@ export const theme = extendTheme({
 				},
 			},
 		},
-		JoyStack: {
-			defaultProps: {},
-		},
 	},
 	fontFamily: {
 		display: "'Inter', var(--joy-fontFamily-fallback)",
 		body: "'Inter', var(--joy-fontFamily-fallback)",
 	},
-});
+};

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { StyledEngineProvider } from "@mui/joy/styles";
 
-import "./utils/i18next.js";
+import "./utils/i18next.ts";
 import { setupStore } from "./app/store.ts";
 import { Provider } from "react-redux";
 
