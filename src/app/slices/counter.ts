@@ -1,11 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CounterState {
+interface ICounter {
 	value: number;
 }
 
-const initialCounter: CounterState = {
+const initialCounter: ICounter = {
 	value: 1,
 };
 

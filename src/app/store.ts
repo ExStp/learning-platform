@@ -1,3 +1,4 @@
+import modalsSlice from "./slices/modals";
 import themeSlice from "./slices/theme";
 import counterSlice from "./slices/counter";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
@@ -5,6 +6,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 const rootReducer = combineReducers({
 	counterSlice,
 	themeSlice,
+	modalsSlice,
 });
 
 export function setupStore() {

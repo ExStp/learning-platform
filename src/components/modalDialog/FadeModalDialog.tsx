@@ -1,25 +1,25 @@
 import * as React from "react";
 import { Transition } from "react-transition-group";
-import Button from "@mui/joy/Button";
 import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
-import Typography from "@mui/joy/Typography";
+import { FC } from "react";
+interface IProps {
+	onClose: () => void;
+	isOpen: boolean;
+	children?: React.ReactNode;
+}
 
-export const FadeModalDialog = () => {
-	const [open, setOpen] = React.useState<boolean>(false);
+export const FadeModalDialog: FC<IProps> = ({ onClose, isOpen, children }) => {
 	const modalRef = React.useRef<HTMLDivElement>(null);
 
 	return (
 		<React.Fragment>
-			<Button variant="outlined" color="neutral" onClick={() => setOpen(true)}>
-				Open modal
-			</Button>
-			<Transition in={open} timeout={400} nodeRef={modalRef}>
+			<Transition in={isOpen} timeout={400} nodeRef={modalRef}>
 				{(state: string) => (
 					<Modal
 						keepMounted
 						open={!["exited", "exiting"].includes(state)}
-						onClose={() => setOpen(false)}
+						onClose={onClose}
 						slotProps={{
 							backdrop: {
 								sx: {
@@ -48,15 +48,7 @@ export const FadeModalDialog = () => {
 									: {}),
 							}}
 						>
-							<Typography id="fade-modal-dialog-title" component="h2">
-								Transition modal
-							</Typography>
-							<Typography
-								id="fade-modal-dialog-description"
-								textColor="text.tertiary"
-							>
-								Using `react-transition-group` to create a fade animation.
-							</Typography>
+							{children}
 						</ModalDialog>
 					</Modal>
 				)}
