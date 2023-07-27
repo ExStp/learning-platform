@@ -5,7 +5,7 @@ interface IAuth {
 }
 
 const initialAuth: IAuth = {
-	isAuth: false,
+	isAuth: true,
 };
 
 export const authSlice = createSlice({
