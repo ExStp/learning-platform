@@ -9,6 +9,7 @@ import { ThemeSwitcher } from "../components/outlook/themeSwitcher";
 import Tooltip from "@mui/joy/Tooltip";
 import { LanguageSwitcher } from "../components/outlook/languageSwitcher";
 import { PrimaryColorSwitcher } from "../components/outlook/primaryColorSwitcher";
+import { colorScheme } from "../app/types/types";
 
 export const SettingsUI = () => {
 	const IsSettingsUIOpen = useAppSelector((state) => state.modalsSlice.settingsUI);
@@ -47,32 +48,48 @@ const SettingsContent = () => {
 				Settings UI
 			</Typography>
 
-			<Stack spacing={1}>
-				<Typography id="nested-modal-description" textColor="text.tertiary">
-					Switch mode
-				</Typography>
-				<ThemeSwitcher />
+			<Stack direction={"row"} justifyContent="space-between">
+				<Stack spacing={1}>
+					<Typography
+						id="nested-modal-description"
+						textColor="text.tertiary"
+						textAlign="center"
+					>
+						Mode
+					</Typography>
+					<ThemeSwitcher />
+				</Stack>
+
+				<Stack spacing={1}>
+					<Typography
+						id="nested-modal-description"
+						textColor="text.tertiary"
+						textAlign="center"
+					>
+						Language
+					</Typography>
+					<LanguageSwitcher />
+				</Stack>
 			</Stack>
 
-			<Stack spacing={1}>
-				<Typography id="nested-modal-description" textColor="text.tertiary">
-					Switch language
-				</Typography>
-				<LanguageSwitcher />
-			</Stack>
+			<Typography id="nested-modal-description" textColor="text.tertiary" pt="16px">
+				Set accent color scheme
+			</Typography>
 
-			<Stack spacing={1}>
-				<Typography id="nested-modal-description" textColor="text.tertiary">
-					Switch accent color for dark theme
-				</Typography>
-				<PrimaryColorSwitcher themeMode={"dark"}/>
-			</Stack>
+			<Stack direction='column' justifyContent="space-between" spacing={2}>
+				<Stack spacing={1}>
+					<Typography id="nested-modal-description" textColor="text.tertiary">
+						Dark theme
+					</Typography>
+					<PrimaryColorSwitcher themeMode={colorScheme.dark} />
+				</Stack>
 
-			<Stack spacing={1}>
-				<Typography id="nested-modal-description" textColor="text.tertiary">
-					Switch accent color for light theme
-				</Typography>
-				<PrimaryColorSwitcher themeMode={"light"}/>
+				<Stack spacing={1}>
+					<Typography id="nested-modal-description" textColor="text.tertiary">
+						Light theme
+					</Typography>
+					<PrimaryColorSwitcher themeMode={colorScheme.light} />
+				</Stack>
 			</Stack>
 		</Stack>
 	);
