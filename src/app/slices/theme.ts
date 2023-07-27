@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ITheme } from "../types/ITheme";
+import { ITheme } from "../interfaces/ITheme";
 import { defaultTheme } from "../../assets/theme/defaultTheme";
 
 const initialTheme: ITheme = defaultTheme;

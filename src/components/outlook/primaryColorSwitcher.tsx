@@ -4,7 +4,7 @@ import Option from "@mui/joy/Option";
 import { palette } from "../../assets/colors/palette";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/redux";
 import { setColorScheme } from "../../app/slices/theme";
-import { IPaletteColors } from "../../app/types/ITheme";
+import { IPaletteColors } from "../../app/interfaces/ITheme";
 
 interface IProps {
 	themeMode: "dark" | "light";
