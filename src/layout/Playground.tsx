@@ -4,7 +4,7 @@ import Button from "@mui/joy/Button";
 import { useTranslation } from "react-i18next";
 import { Counter } from "../components/counter/Counter";
 import Stack from "@mui/joy/Stack";
-import { SettingsUI } from "./SettingsUI";
+import { SettingsUI } from "../components/buttons/SettingsUI";
 
 export function Playground() {
 	const { t } = useTranslation();
