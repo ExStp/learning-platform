@@ -46,11 +46,7 @@ function App() {
 			<CssBaseline />
 			<Box
 				sx={{
-					flexDirection: "column",
-					display: "flex",
 					minHeight: "100dvh",
-					justifyContent: "flex-start",
-					alignItems: "flex-start",
 				}}
 			>
 				<Header />

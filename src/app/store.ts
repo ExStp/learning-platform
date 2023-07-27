@@ -1,3 +1,4 @@
+import authSlice from "./slices/auth";
 import modalsSlice from "./slices/modals";
 import themeSlice from "./slices/theme";
 import counterSlice from "./slices/counter";
@@ -7,6 +8,7 @@ const rootReducer = combineReducers({
 	counterSlice,
 	themeSlice,
 	modalsSlice,
+	authSlice,
 });
 
 export function setupStore() {

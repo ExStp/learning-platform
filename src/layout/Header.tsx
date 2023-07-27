@@ -3,15 +3,20 @@ import Sheet from "@mui/joy/Sheet";
 import Grid from "@mui/joy/Grid";
 import Stack from "@mui/joy/Stack";
 import Button from "@mui/joy/Button";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../app/routers/routes";
+import { useAppSelector } from "../app/hooks/redux";
 
 export const Header = () => {
-	const isAuth: boolean = true;
+	const isAuth = useAppSelector((state) => state.authSlice.isAuth);
+	console.log(isAuth);
 
 	return (
 		<Sheet
 			color="primary"
 			variant="solid"
 			sx={{
+				position: "fixed",
 				boxSizing: "border-box",
 				height: "60px",
 				width: "100vw",
