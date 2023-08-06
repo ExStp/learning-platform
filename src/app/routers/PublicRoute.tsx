@@ -13,7 +13,7 @@ export const PublicRoute: FC<IProps> = ({ element }) => {
 
 	useEffect(() => {
 		if (isAuth) {
-			return navigate(ROUTES.CHAT);
+			return navigate(ROUTES.HOME);
 		}
 	}, []);
 

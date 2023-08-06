@@ -13,7 +13,7 @@ export const PrivateRoute: FC<IProps> = ({ element }) => {
 
 	useEffect(() => {
 		if (!isAuth) {
-			return navigate(ROUTES.LOGIN);
+			return navigate(ROUTES.HOME);
 		}
 	}, []);
 
