@@ -30,7 +30,7 @@ export const Dictionary: FC = () => {
 				onSubmit={handleWordExplore}
 				style={{
 					width: "100%",
-					maxWidth: "800px",
+					maxWidth: "600px",
 					display: "flex",
 					gap: isScreenSm ? "0" : "12px",
 				}}
