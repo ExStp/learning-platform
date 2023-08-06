@@ -2,12 +2,14 @@ interface pronunciation {
 	all: string;
 }
 
-interface result {
+export interface IResult {
 	definition: string;
-	examples: Array<string>;
+	derivation?: Array<string>;
+	examples?: Array<string>;
 	partOfSpeech: string;
-	similarTo: Array<string>;
-	synonyms: Array<string>;
+	similarTo?: Array<string>;
+	synonyms?: Array<string>;
+	typeOf?: Array<string>;
 }
 
 interface syllables {
@@ -18,7 +20,7 @@ interface syllables {
 export interface IWordExplore {
 	frequency: number;
 	pronunciation: pronunciation;
-	results: result;
+	results: Array<IResult>;
 	syllables: syllables;
 	word: string;
 }

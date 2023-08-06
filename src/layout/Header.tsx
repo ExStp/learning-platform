@@ -10,6 +10,7 @@ export const Header = () => {
 			color="primary"
 			variant="solid"
 			sx={{
+				zIndex: "1000",
 				position: "fixed",
 				boxSizing: "border-box",
 				height: "60px",

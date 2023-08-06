@@ -7,24 +7,25 @@ import { WordInfo } from "../../components/WordExplore/WordInfo";
 export const WordExplore: FC = () => {
 	const { word } = useParams<{ word: string }>();
 	if (!word) return null;
-	const { data, error, isFetching } = wordsAPI.useFetchExploreWordQuery(word);
-	console.log(data);
+	const { data, error, isFetching, isSuccess } = wordsAPI.useFetchExploreWordQuery(word);
 
-	// @ts-expect-error unknown
-	if (error?.status === "FETCH_ERROR") {
-		return (
-			<Typography level="h3" textAlign="center">
-				network error
-			</Typography>
-		);
-	}
-	// @ts-expect-error unknown
-	if (error?.status === 404) {
-		return (
-			<Typography level="h3" textAlign="center">
-				word not found
-			</Typography>
-		);
+	if (!isSuccess) {
+		// @ts-expect-error unknown
+		if (error?.status === "FETCH_ERROR") {
+			return (
+				<Typography level="h3" textAlign="center">
+					network error
+				</Typography>
+			);
+		}
+		// @ts-expect-error unknown
+		if (error?.status === 404) {
+			return (
+				<Typography level="h3" textAlign="center">
+					word not found
+				</Typography>
+			);
+		}
 	}
 	if (!data || isFetching) {
 		return (
@@ -34,5 +35,5 @@ export const WordExplore: FC = () => {
 			/>
 		);
 	}
-	return <WordInfo data={data} />;
+	if (isSuccess) return <WordInfo data={data} />;
 };
