@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IWordExplore } from "../interfaces/IWordExplore";
 
 const API = {
 	baseURL: "https://wordsapiv1.p.rapidapi.com/words/",
@@ -20,7 +21,7 @@ export const wordsAPI = createApi({
 		},
 	}),
 	endpoints: (build) => ({
-		fetchExploreWord: build.query({
+		fetchExploreWord: build.query<IWordExplore, string>({
 			query: (word) => ({
 				url: word,
 			}),

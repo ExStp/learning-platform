@@ -50,7 +50,9 @@ export const Dictionary: FC = () => {
 					<SearchIcon />
 				</IconButton>
 			</form>
-			<Outlet />
+			<Box sx={{ width: "100%", mt: 4 }}>
+				<Outlet />
+			</Box>
 		</Box>
 	);
 };
