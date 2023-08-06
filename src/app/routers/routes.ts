@@ -1,5 +1,6 @@
 export enum ROUTES {
-	CHAT = "/chat",
-	LOGIN = "/login",
+	HOME = "/home",
+	DICTIONARY = "/dictionary",
+	WORD_EXPLORE = ":word",
 	NOT_FOUND = "*",
 }

@@ -6,7 +6,7 @@ export const Error: FC = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		navigate(ROUTES.CHAT);
+		navigate(ROUTES.HOME);
 	}, []);
 	return <h1>Not Found!</h1>;
 };
