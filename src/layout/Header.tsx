@@ -2,14 +2,9 @@ import { SettingsUI } from "../components/buttons/SettingsUI";
 import Sheet from "@mui/joy/Sheet";
 import Grid from "@mui/joy/Grid";
 import Stack from "@mui/joy/Stack";
-import Button from "@mui/joy/Button";
-import { useAppDispatch, useAppSelector } from "../app/hooks/redux";
-import { toggleAuth } from "../app/slices/auth";
+import { UserAuth } from "../components/buttons/UserAuth";
 
 export const Header = () => {
-	const isAuth = useAppSelector((state) => state.authSlice.isAuth);
-	const dispatch = useAppDispatch();
-
 	return (
 		<Sheet
 			color="primary"
@@ -34,15 +29,7 @@ export const Header = () => {
 				<Grid xs="auto">
 					<Stack direction="row" spacing={2}>
 						<SettingsUI />
-						{isAuth ? (
-							<Button variant="soft" onClick={() => dispatch(toggleAuth(false))}>
-								Log out
-							</Button>
-						) : (
-							<Button variant="soft" onClick={() => dispatch(toggleAuth(true))}>
-								Log in
-							</Button>
-						)}
+						<UserAuth />
 					</Stack>
 				</Grid>
 			</Grid>

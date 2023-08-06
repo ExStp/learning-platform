@@ -5,9 +5,10 @@ import { palette } from "../../assets/colors/palette";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/redux";
 import { setColorScheme } from "../../app/slices/theme";
 import { IPaletteColors } from "../../app/interfaces/ITheme";
+import { colorScheme } from "../../app/types/types";
 
 interface IProps {
-	themeMode: "dark" | "light";
+	themeMode: colorScheme;
 }
 
 export const PrimaryColorSwitcher: FC<IProps> = ({ themeMode }) => {
