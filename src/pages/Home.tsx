@@ -1,5 +1,14 @@
+import { Box, Button } from "@mui/joy";
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 export const Home: FC = () => {
-    return <h1>Home page</h1>
-}
+	return (
+		<Box>
+			<h1>Home page</h1>
+			<Link to={"/dictionary"}>
+				<Button>Dictionary</Button>
+			</Link>
+		</Box>
+	);
+};
