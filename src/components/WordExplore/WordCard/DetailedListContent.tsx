@@ -1,29 +1,32 @@
-import { Card, Divider, List, ListItem, Typography, styled } from "@mui/joy";
+import { Card, Divider, IconButton, List, ListItem, Typography } from "@mui/joy";
 import { FC, useState } from "react";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface IProps {
 	list: Array<string>;
+	name: string;
 }
 
-const StyledCard = styled(Card)({
-	minWidth: "160px",
-	maxHeight: "230px",
-	overflowY: "auto",
-});
+export const DetailedListContent: FC<IProps> = ({ list, name }) => {
+	const [isExpanded, setIsExpanded] = useState(false);
+	const itemsToShow = isExpanded ? list : list.slice(0, 3);
 
-export const DetailedListContent: FC<IProps> = ({ list }) => {
-	const isExpanded = useState(false);
-	const itemsToShow = isExpanded ? list : list.slice(0, 6);
-
+	const handleExpandMore = () => {
+		setIsExpanded(true);
+	};
+	const handleExpandLess = () => {
+		setIsExpanded(false);
+	};
 	return (
-		<StyledCard key={key} variant="outlined">
+		<Card key={name} variant="outlined" sx={{ minWidth: "160px" }}>
 			<Typography
 				id="basic-list-demo"
 				level="body1"
 				textTransform="uppercase"
 				fontWeight="lg"
 			>
-				{key}
+				{name}
 			</Typography>
 			<Divider />
 			<List aria-labelledby="basic-list-demo" sx={{ padding: 0 }}>
@@ -33,6 +36,17 @@ export const DetailedListContent: FC<IProps> = ({ list }) => {
 					</ListItem>
 				))}
 			</List>
-		</StyledCard>
+			{list.length > 3 ? (
+				isExpanded ? (
+					<IconButton size="sm" onClick={handleExpandLess}>
+						<ExpandLessIcon />
+					</IconButton>
+				) : (
+					<IconButton size="sm" onClick={handleExpandMore}>
+						<ExpandMoreIcon />
+					</IconButton>
+				)
+			) : null}
+		</Card>
 	);
 };

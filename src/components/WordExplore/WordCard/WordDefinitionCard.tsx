@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import { IResult } from "../../../app/interfaces/IWordExplore";
 import { Card, Typography, Chip, IconButton, Stack } from "@mui/joy";
 import { useResize } from "../../../app/hooks/useResize";
-import { uniqueId } from "lodash";
 import { DetailedContent } from "./DetailedContent";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -18,14 +17,17 @@ export const WordDefinitionCard: FC<IProps> = ({ result }) => {
 	return (
 		<Card variant="plain" sx={{ minWidth: "200px" }}>
 			<Stack direction="row">
-				<Chip size="sm" sx={{ marginRight: "12px", maxHeight: "18px" }}>
-					{result.partOfSpeech}
-				</Chip>
+				{result?.partOfSpeech ? (
+					<Chip size="sm" sx={{ marginRight: "12px", maxHeight: "18px" }}>
+						{result?.partOfSpeech}
+					</Chip>
+				) : null}
+
 				<Typography
 					level={isScreenSm ? "body1" : "h5"}
-					sx={{ textTransform: "capitalize", paddingRight: '24px' }}
+					sx={{ textTransform: "capitalize", paddingRight: "24px" }}
 				>
-					{result.definition}
+					{result?.definition}
 				</Typography>
 				{isExpanded ? (
 					<IconButton
@@ -45,11 +47,7 @@ export const WordDefinitionCard: FC<IProps> = ({ result }) => {
 					</IconButton>
 				)}
 			</Stack>
-			{isExpanded && <WordExpandedCardContent key={uniqueId()} result={result} />}
+			{isExpanded && <DetailedContent data={result} />}
 		</Card>
 	);
-};
-
-const WordExpandedCardContent: FC<IProps> = ({ result }) => {
-	return <DetailedContent data={result} />;
 };

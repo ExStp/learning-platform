@@ -2,6 +2,7 @@ import { FC } from "react";
 import { IResult } from "../../../app/interfaces/IWordExplore";
 import { Card, Divider, List, ListItem, Stack, Typography } from "@mui/joy";
 import { styled } from "@mui/material/styles";
+import { DetailedListContent } from "./DetailedListContent";
 
 interface IProps {
 	data: IResult;
@@ -22,27 +23,7 @@ export const DetailedContent: FC<IProps> = ({ data }) => {
 		if (Array.isArray(data[key])) {
 			// For arrays, create a list of values with a maximum of 6 items
 			const list = data[key] as string[];
-			const itemsToShow = list.slice(0, 6);
-			listItems.push(
-				<StyledCard key={key} variant="outlined">
-					<Typography
-						id="basic-list-demo"
-						level="body1"
-						textTransform="uppercase"
-						fontWeight="lg"
-					>
-						{key}
-					</Typography>
-					<Divider />
-					<List aria-labelledby="basic-list-demo" sx={{ padding: 0 }}>
-						{itemsToShow.map((item) => (
-							<ListItem key={item} sx={{ padding: 0 }}>
-								{item}
-							</ListItem>
-						))}
-					</List>
-				</StyledCard>
-			);
+			listItems.push(<DetailedListContent key={key} name={key} list={list} />);
 		} else if (typeof data[key] === "string") {
 			// For strings, display the value
 			listItems.push(
@@ -71,7 +52,7 @@ export const DetailedContent: FC<IProps> = ({ data }) => {
 			spacing={2}
 			useFlexGap
 			flexWrap="wrap"
-			sx={{ justifyContent: "stretch" }}
+			sx={{ marginTop: "16px" }}
 		>
 			{listItems}
 		</Stack>
