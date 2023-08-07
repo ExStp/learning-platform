@@ -41,6 +41,7 @@ export const FadeModalDialog: FC<IProps> = ({ onClose, isOpen, children }) => {
 							aria-labelledby="fade-modal-dialog-title"
 							aria-describedby="fade-modal-dialog-description"
 							sx={{
+								overflowY: "auto",
 								opacity: 0,
 								transition: `opacity 300ms`,
 								...(state === "entering" || state === "entered"

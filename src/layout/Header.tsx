@@ -26,7 +26,7 @@ export const Header = () => {
 					padding: "0 24px",
 				}}
 			>
-				<Grid xs="auto">Header</Grid>
+				<Grid xs="auto"></Grid>
 				<Grid xs="auto">
 					<Stack direction="row" spacing={2}>
 						<SettingsUI />

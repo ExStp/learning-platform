@@ -7,7 +7,7 @@ export const defaultTheme = {
 				background: {
 					body: "var(--joy-palette-neutral-50)",
 				},
-				primary: palette.stone,
+				primary: palette.violet,
 			},
 		},
 		dark: {
