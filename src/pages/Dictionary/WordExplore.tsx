@@ -8,6 +8,7 @@ export const WordExplore: FC = () => {
 	const { word } = useParams<{ word: string }>();
 	if (!word) return null;
 	const { data, error, isFetching, isSuccess } = wordsAPI.useFetchExploreWordQuery(word);
+	console.log(data);
 
 	if (!isSuccess) {
 		// @ts-expect-error unknown

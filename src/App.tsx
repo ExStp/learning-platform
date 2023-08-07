@@ -51,6 +51,9 @@ function App() {
 						width: "1em",
 						height: "1em",
 					},
+					ul: {
+						margin: 0,
+					},
 				}}
 			/>
 			<CssBaseline />

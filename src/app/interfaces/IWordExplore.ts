@@ -10,6 +10,7 @@ export interface IResult {
 	similarTo?: Array<string>;
 	synonyms?: Array<string>;
 	typeOf?: Array<string>;
+	[key: string]: Array<string> | string | undefined;
 }
 
 interface syllables {
