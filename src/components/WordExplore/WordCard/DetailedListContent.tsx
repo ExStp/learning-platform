@@ -12,14 +12,15 @@ export const DetailedListContent: FC<IProps> = ({ list, name }) => {
 	const [isExpanded, setIsExpanded] = useState(false);
 	const itemsToShow = isExpanded ? list : list.slice(0, 3);
 
-	const handleExpandMore = () => {
-		setIsExpanded(true);
-	};
-	const handleExpandLess = () => {
-		setIsExpanded(false);
+	const toggleExpand = () => {
+		setIsExpanded(!isExpanded);
 	};
 	return (
-		<Card key={name} variant="outlined" sx={{ minWidth: "160px" }}>
+		<Card
+			key={name}
+			variant="outlined"
+			sx={{ minWidth: "160px", transition: "height 0.5s", height: "min-content" }}
+		>
 			<Typography
 				id="basic-list-demo"
 				level="body1"
@@ -37,15 +38,9 @@ export const DetailedListContent: FC<IProps> = ({ list, name }) => {
 				))}
 			</List>
 			{list.length > 3 ? (
-				isExpanded ? (
-					<IconButton size="sm" onClick={handleExpandLess}>
-						<ExpandLessIcon />
-					</IconButton>
-				) : (
-					<IconButton size="sm" onClick={handleExpandMore}>
-						<ExpandMoreIcon />
-					</IconButton>
-				)
+				<IconButton size="sm" onClick={toggleExpand}>
+					{isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+				</IconButton>
 			) : null}
 		</Card>
 	);

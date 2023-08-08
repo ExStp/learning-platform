@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { IResult } from "../../../app/interfaces/IWordExplore";
 import { Card, Typography, Chip, IconButton, Stack } from "@mui/joy";
 import { useResize } from "../../../app/hooks/useResize";
@@ -12,10 +12,31 @@ interface IProps {
 
 export const WordDefinitionCard: FC<IProps> = ({ result }) => {
 	const [isExpanded, setIsExpanded] = useState(false);
+	const [isHover, setIsHover] = useState(false);
 	const { isScreenSm } = useResize();
 
+	const handleExpandMore = (event: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
+		event.stopPropagation();
+		setIsExpanded(true);
+	};
+	const handleExpandLess = (event: React.MouseEvent<HTMLButtonElement>) => {
+		event.stopPropagation();
+		setIsExpanded(false);
+	};
+
 	return (
-		<Card variant="plain" sx={{ minWidth: "200px" }}>
+		<Card
+			variant="plain"
+			sx={{
+				minWidth: "200px",
+				transform: isHover ? "translateY(-5px)" : "none",
+				transition: "transform 0.5s",
+				cursor: isExpanded ? "default" : "pointer",
+			}}
+			onClick={handleExpandMore}
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
+		>
 			<Stack direction="row">
 				{result?.partOfSpeech ? (
 					<Chip size="sm" sx={{ marginRight: "12px", maxHeight: "18px" }}>
@@ -33,7 +54,7 @@ export const WordDefinitionCard: FC<IProps> = ({ result }) => {
 					<IconButton
 						variant="plain"
 						sx={{ position: "absolute", right: "10px", top: "10px" }}
-						onClick={() => setIsExpanded(false)}
+						onClick={handleExpandLess}
 					>
 						<ExpandLessIcon />
 					</IconButton>
@@ -41,7 +62,7 @@ export const WordDefinitionCard: FC<IProps> = ({ result }) => {
 					<IconButton
 						variant="plain"
 						sx={{ position: "absolute", right: "10px", top: "10px" }}
-						onClick={() => setIsExpanded(true)}
+						onClick={handleExpandMore}
 					>
 						<ExpandMoreIcon />
 					</IconButton>

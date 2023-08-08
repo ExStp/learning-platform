@@ -1,16 +1,26 @@
-import { Box, Stack, Typography } from "@mui/joy";
-import { FC } from "react";
+import { Button, Divider, Stack, Typography } from "@mui/joy";
+import { FC, useState } from "react";
 import { IResult, IWordExplore } from "../../app/interfaces/IWordExplore";
 import { WordDefinitionCard } from "./WordCard/WordDefinitionCard";
 import { uniqueId } from "lodash";
+import { DetailsAccordion } from "./DetailsAccordion/DetailsAccordion";
 
 interface IProps {
 	data: IWordExplore;
 }
 
+const dataLessLength: number = 5;
+
 export const WordInfo: FC<IProps> = ({ data }) => {
+	const [isExpanded, setIsExpanded] = useState(false);
+	const dataToShow = isExpanded ? data.results : data.results.slice(0, dataLessLength);
+
+	const toggleExpand = () => {
+		setIsExpanded(!isExpanded);
+	};
+
 	return (
-		<Box>
+		<Stack spacing={4}>
 			<Stack spacing={2}>
 				<Typography level="h3" textAlign="center">
 					{data?.word ?? null}
@@ -19,11 +29,16 @@ export const WordInfo: FC<IProps> = ({ data }) => {
 					{data?.pronunciation?.all ?? null}
 				</Typography>
 			</Stack>
-			<Stack spacing={2} mt={4}>
-				{data.results.map((result: IResult) => (
+			<Stack spacing={2}>
+				{dataToShow.map((result: IResult) => (
 					<WordDefinitionCard result={result} key={uniqueId()} />
 				))}
 			</Stack>
-		</Box>
+			{data.results.length > dataLessLength ? (
+				<Divider>
+					<Button onClick={toggleExpand}>{isExpanded ? "show less" : "show more"}</Button>
+				</Divider>
+			) : null}
+		</Stack>
 	);
 };
