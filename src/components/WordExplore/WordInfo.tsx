@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import { IResult, IWordExplore } from "../../app/interfaces/IWordExplore";
 import { WordDefinitionCard } from "./WordCard/WordDefinitionCard";
 import { uniqueId } from "lodash";
+import { DetailsAccordion } from "./DetailsAccordion/DetailsAccordion";
 
 interface IProps {
 	data: IWordExplore;
@@ -38,6 +39,7 @@ export const WordInfo: FC<IProps> = ({ data }) => {
 					<Button onClick={toggleExpand}>{isExpanded ? "show less" : "show more"}</Button>
 				</Divider>
 			) : null}
+			<DetailsAccordion word={data.word} />
 		</Stack>
 	);
 };

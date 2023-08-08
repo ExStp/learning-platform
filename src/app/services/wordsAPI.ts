@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IWordExplore } from "../interfaces/IWordExplore";
+import { IAntonyms, IExamples, ISynonyms } from "../interfaces/IDetailedWordInfo";
 
 const API = {
 	baseURL: "https://wordsapiv1.p.rapidapi.com/words/",
@@ -24,6 +25,21 @@ export const wordsAPI = createApi({
 		fetchExploreWord: build.query<IWordExplore, string>({
 			query: (word) => ({
 				url: word,
+			}),
+		}),
+		fetchExamples: build.query<IExamples, string>({
+			query: (word) => ({
+				url: `${word}/examples`,
+			}),
+		}),
+		fetchSynonyms: build.query<ISynonyms, string>({
+			query: (word) => ({
+				url: `${word}/synonyms`,
+			}),
+		}),
+		fetchAntonyms: build.query<IAntonyms, string>({
+			query: (word) => ({
+				url: `${word}/antonyms`,
 			}),
 		}),
 	}),
