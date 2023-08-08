@@ -9,7 +9,6 @@ interface IProps {
 }
 
 export const DetailsAccordion: FC<IProps> = ({ word }) => {
-	console.log(word);
 	return (
 		<Accordion allowMultiple>
 			<AccordionItem header={({ state }) => `Examples: ${state.isEnter}`}>
