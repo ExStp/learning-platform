@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/joy";
+import { Card, CircularProgress, Stack } from "@mui/joy";
 import { wordsAPI } from "../../../../app/services/wordsAPI";
 import { FC } from "react";
 import { uniqueId } from "lodash";
@@ -14,13 +14,13 @@ export const WordAntonyms: FC<IProps> = ({ word }) => {
 	if (isFetching) return <CircularProgress />;
 	if (data?.antonyms.length) {
 		return (
-			<ul>
+			<Stack spacing={1} direction="row" useFlexGap flexWrap="wrap">
 				{data?.antonyms.map((antonym) => (
-					<li key={uniqueId()}>{antonym}</li>
+					<Card key={uniqueId()}>{antonym}</Card>
 				))}
-			</ul>
+			</Stack>
 		);
 	} else {
-		return <p>нет данных</p>;
+		return <p>no data</p>;
 	}
 };

@@ -20,7 +20,7 @@ export const WordInfo: FC<IProps> = ({ data }) => {
 	};
 
 	return (
-		<Stack spacing={4}>
+		<Stack spacing={5}>
 			<Stack spacing={2}>
 				<Typography level="h3" textAlign="center">
 					{data?.word ?? null}

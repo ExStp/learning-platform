@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/joy";
+import { Card, CircularProgress, Stack } from "@mui/joy";
 import { wordsAPI } from "../../../../app/services/wordsAPI";
 import { FC } from "react";
 import { uniqueId } from "lodash";
@@ -12,13 +12,15 @@ export const WordExamples: FC<IProps> = ({ word }) => {
 
 	if (isError) return <p>Network error</p>;
 	if (isFetching) return <CircularProgress />;
-	if (data) {
+	if (data?.examples.length) {
 		return (
-			<ul>
+			<Stack spacing={1} direction={{ xs: "column", sm: "row" }} useFlexGap flexWrap="wrap">
 				{data?.examples.map((example) => (
-					<li key={uniqueId()}>{example}</li>
+					<Card key={uniqueId()}>{example}</Card>
 				))}
-			</ul>
+			</Stack>
 		);
+	} else {
+		return <p>no data</p>;
 	}
 };

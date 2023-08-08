@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/joy";
+import { Card, CircularProgress, Stack } from "@mui/joy";
 import { wordsAPI } from "../../../../app/services/wordsAPI";
 import { FC } from "react";
 import { uniqueId } from "lodash";
@@ -12,13 +12,15 @@ export const WordSynonyms: FC<IProps> = ({ word }) => {
 
 	if (isError) return <p>Network error</p>;
 	if (isFetching) return <CircularProgress />;
-	if (data) {
+	if (data?.synonyms.length) {
 		return (
-			<ul>
+			<Stack spacing={1} direction="row" useFlexGap flexWrap="wrap">
 				{data?.synonyms.map((synonym) => (
-					<li key={uniqueId()}>{synonym}</li>
+					<Card key={uniqueId()}>{synonym}</Card>
 				))}
-			</ul>
+			</Stack>
 		);
+	} else {
+		return <p>no data</p>;
 	}
 };
