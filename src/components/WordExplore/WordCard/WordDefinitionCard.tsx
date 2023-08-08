@@ -16,10 +16,12 @@ export const WordDefinitionCard: FC<IProps> = ({ result }) => {
 	const { isScreenSm } = useResize();
 
 	const handleExpandMore = (event: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
+		setIsHover(true)
 		event.stopPropagation();
 		setIsExpanded(true);
 	};
 	const handleExpandLess = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setIsHover(false)
 		event.stopPropagation();
 		setIsExpanded(false);
 	};
