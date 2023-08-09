@@ -4,7 +4,7 @@ import { WordExamples } from "./AccordionItems/WordExamples";
 import { WordSynonyms } from "./AccordionItems/WordSynonyms";
 import { WordAntonyms } from "./AccordionItems/WordAntonyms";
 import styles from "./styles.module.css";
-import { Button, Stack, Typography } from "@mui/joy";
+import { Typography } from "@mui/joy";
 
 interface AccordionItemProps {
 	header: string;
@@ -31,48 +31,27 @@ interface IProps {
 
 export const DetailsAccordion: FC<IProps> = ({ word }) => {
 	return (
-		<Accordion allowMultiple className={styles.accordion}>
+		<Accordion className={styles.accordion}>
 			<AccordionItem header="Examples">
-				{({ toggle, state }) => {
+				{({ state }) => {
 					if (state.isEnter) {
-						return (
-							<Stack alignItems="flex-start" spacing={2}>
-								{state.isEnter ? <WordExamples word={word} /> : null}
-								<Button className="btn" onClick={() => toggle()}>
-									{state.isEnter ? "Close" : "Open"}
-								</Button>
-							</Stack>
-						);
+						return <WordExamples word={word} />;
 					}
 				}}
 			</AccordionItem>
 
 			<AccordionItem header="Synonyms">
-				{({ toggle, state }) => {
+				{({ state }) => {
 					if (state.isEnter) {
-						return (
-							<Stack alignItems="flex-start" spacing={2}>
-								{state.isEnter ? <WordSynonyms word={word} /> : null}
-								<Button className="btn" onClick={() => toggle()}>
-									{state.isEnter ? "Close" : "Open"}
-								</Button>
-							</Stack>
-						);
+						return <WordSynonyms word={word} />;
 					}
 				}}
 			</AccordionItem>
 
 			<AccordionItem header="Antonyms">
-				{({ toggle, state }) => {
+				{({ state }) => {
 					if (state.isEnter) {
-						return (
-							<Stack alignItems="flex-start" spacing={2}>
-								{state.isEnter ? <WordAntonyms word={word} /> : null}
-								<Button className="btn" onClick={() => toggle()}>
-									{state.isEnter ? "Close" : "Open"}
-								</Button>
-							</Stack>
-						);
+						return <WordAntonyms word={word} />;
 					}
 				}}
 			</AccordionItem>

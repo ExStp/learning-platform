@@ -12,18 +12,11 @@ interface IProps {
 
 export const WordDefinitionCard: FC<IProps> = ({ result }) => {
 	const [isExpanded, setIsExpanded] = useState(false);
-	const [isHover, setIsHover] = useState(false);
 	const { isScreenSm } = useResize();
 
-	const handleExpandMore = (event: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
-		setIsHover(true)
+	const handleToggleExpand = (event: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
 		event.stopPropagation();
-		setIsExpanded(true);
-	};
-	const handleExpandLess = (event: React.MouseEvent<HTMLButtonElement>) => {
-		setIsHover(false)
-		event.stopPropagation();
-		setIsExpanded(false);
+		setIsExpanded((prev) => !prev);
 	};
 
 	return (
@@ -31,44 +24,27 @@ export const WordDefinitionCard: FC<IProps> = ({ result }) => {
 			variant="plain"
 			sx={{
 				minWidth: "200px",
-				transform: isHover ? "translateY(-5px)" : "none",
+				transform: isExpanded ? "translateY(-5px)" : "none",
 				transition: "transform 0.5s",
 				cursor: isExpanded ? "default" : "pointer",
 			}}
-			onClick={handleExpandMore}
-			onMouseEnter={() => setIsHover(true)}
-			onMouseLeave={() => setIsHover(false)}
+			onClick={() => setIsExpanded(true)}
 		>
-			<Stack direction="row">
-				{result?.partOfSpeech ? (
-					<Chip size="sm" sx={{ marginRight: "12px", maxHeight: "18px" }}>
-						{result?.partOfSpeech}
-					</Chip>
-				) : null}
-
+			<Stack direction="row" alignItems="center">
 				<Typography
 					level={isScreenSm ? "body1" : "h5"}
-					sx={{ textTransform: "capitalize", paddingRight: "24px" }}
+					sx={{ textTransform: "capitalize", paddingRight: "24px", width: "100%" }}
 				>
+					{result?.partOfSpeech ? (
+						<Chip size="sm" sx={{ marginRight: "12px", maxHeight: "18px" }}>
+							{result?.partOfSpeech}
+						</Chip>
+					) : null}
 					{result?.definition}
 				</Typography>
-				{isExpanded ? (
-					<IconButton
-						variant="plain"
-						sx={{ position: "absolute", right: "10px", top: "10px" }}
-						onClick={handleExpandLess}
-					>
-						<ExpandLessIcon />
-					</IconButton>
-				) : (
-					<IconButton
-						variant="plain"
-						sx={{ position: "absolute", right: "10px", top: "10px" }}
-						onClick={handleExpandMore}
-					>
-						<ExpandMoreIcon />
-					</IconButton>
-				)}
+				<IconButton onClick={handleToggleExpand} variant="plain">
+					{isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+				</IconButton>
 			</Stack>
 			{isExpanded && <DetailedContent data={result} />}
 		</Card>

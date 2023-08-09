@@ -34,7 +34,7 @@ export const AppLayout = () => {
 				>
 					<Grid xs="auto">
 						{!isHomePath ? (
-							<Link to={ROUTES.HOME}>
+							<Link to={ROUTES.HOME} style={{ textDecoration: "none" }}>
 								<Button size="lg">Get home</Button>
 							</Link>
 						) : (
