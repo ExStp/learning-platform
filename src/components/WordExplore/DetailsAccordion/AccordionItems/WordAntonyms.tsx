@@ -4,6 +4,7 @@ import { FC } from "react";
 import { uniqueId } from "lodash";
 import { AlertSmall } from "../../../alerts/AlertSmall";
 import ReportIcon from "@mui/icons-material/Report";
+import InfoIcon from "@mui/icons-material/Info";
 
 interface IProps {
 	word: string;
@@ -29,6 +30,6 @@ export const WordAntonyms: FC<IProps> = ({ word }) => {
 			</Stack>
 		);
 	} else {
-		return <p>no data</p>;
+		return <AlertSmall title="no data" color="neutral" icon={<InfoIcon />} />;
 	}
 };

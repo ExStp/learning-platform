@@ -4,6 +4,7 @@ import { FC } from "react";
 import { uniqueId } from "lodash";
 import { AlertSmall } from "../../../alerts/AlertSmall";
 import ReportIcon from "@mui/icons-material/Report";
+import InfoIcon from "@mui/icons-material/Info";
 
 interface IProps {
 	word: string;
@@ -15,7 +16,7 @@ export const WordSynonyms: FC<IProps> = ({ word }) => {
 	if (isFetching) return <CircularProgress />;
 	if (isError) {
 		return (
-			<AlertSmall title="NetworkError" color='danger' icon={<ReportIcon />}>
+			<AlertSmall title="NetworkError" color="danger" icon={<ReportIcon />}>
 				<Typography>Realod your browser</Typography>
 			</AlertSmall>
 		);
@@ -29,6 +30,6 @@ export const WordSynonyms: FC<IProps> = ({ word }) => {
 			</Stack>
 		);
 	} else {
-		return <p>no data</p>;
+		return <AlertSmall title="no data" color="neutral" icon={<InfoIcon />} />;
 	}
 };
