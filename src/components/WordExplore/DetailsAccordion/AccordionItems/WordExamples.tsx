@@ -1,7 +1,9 @@
-import { Card, CircularProgress, Stack } from "@mui/joy";
+import { Card, CircularProgress, Stack, Typography } from "@mui/joy";
 import { wordsAPI } from "../../../../app/services/wordsAPI";
 import { FC } from "react";
 import { uniqueId } from "lodash";
+import { AlertSmall } from "../../../alerts/AlertSmall";
+import ReportIcon from "@mui/icons-material/Report";
 
 interface IProps {
 	word: string;
@@ -10,8 +12,14 @@ interface IProps {
 export const WordExamples: FC<IProps> = ({ word }) => {
 	const { data, isFetching, isError } = wordsAPI.useFetchExamplesQuery(word);
 
-	if (isError) return <p>Network error</p>;
 	if (isFetching) return <CircularProgress />;
+	if (isError) {
+		return (
+			<AlertSmall title="NetworkError" color="danger" icon={<ReportIcon />}>
+				<Typography>Realod your browser</Typography>
+			</AlertSmall>
+		);
+	}
 	if (data?.examples.length) {
 		return (
 			<Stack spacing={1} direction={{ xs: "column", sm: "row" }} useFlexGap flexWrap="wrap">

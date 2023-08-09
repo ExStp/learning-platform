@@ -3,6 +3,9 @@ import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { wordsAPI } from "../../app/services/wordsAPI";
 import { WordInfo } from "../../components/WordExplore/WordInfo";
+import { AlertLarge } from "../../components/alerts/AlertLarge";
+import { AlertSmall } from "../../components/alerts/AlertSmall";
+import InfoIcon from "@mui/icons-material/Info";
 
 export const WordExplore: FC = () => {
 	const { word } = useParams<{ word: string }>();
@@ -13,17 +16,33 @@ export const WordExplore: FC = () => {
 		// @ts-expect-error unknown
 		if (error?.status === "FETCH_ERROR") {
 			return (
-				<Typography level="h3" textAlign="center">
-					network error
-				</Typography>
+				<AlertLarge
+					type="networkError"
+					sx={{
+						position: "fixed",
+						left: "50%",
+						top: "50%",
+						transform: "translateX(-50%)",
+					}}
+				/>
 			);
 		}
 		// @ts-expect-error unknown
 		if (error?.status === 404) {
 			return (
-				<Typography level="h3" textAlign="center">
-					word not found
-				</Typography>
+				<AlertSmall
+					sx={{
+						position: "fixed",
+						left: "50%",
+						top: "50%",
+						transform: "translateX(-50%)",
+					}}
+					title="Word not found"
+					icon={<InfoIcon />}
+					color="neutral"
+				>
+					<Typography level="body1">Plese enter a correct word</Typography>
+				</AlertSmall>
 			);
 		}
 	}
