@@ -5,6 +5,7 @@ import { WordSynonyms } from "./AccordionItems/WordSynonyms";
 import { WordAntonyms } from "./AccordionItems/WordAntonyms";
 import styles from "./styles.module.css";
 import { Typography } from "@mui/joy";
+import { WordFrequency } from "./AccordionItems/WordFrequency";
 
 interface AccordionItemProps {
 	header: string;
@@ -52,6 +53,14 @@ export const DetailsAccordion: FC<IProps> = ({ word }) => {
 				{({ state }) => {
 					if (state.isEnter) {
 						return <WordAntonyms word={word} />;
+					}
+				}}
+			</AccordionItem>
+
+			<AccordionItem header="Frequency">
+				{({ state }) => {
+					if (state.isEnter) {
+						return <WordFrequency word={word} />;
 					}
 				}}
 			</AccordionItem>

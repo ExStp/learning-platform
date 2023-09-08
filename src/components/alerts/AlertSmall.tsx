@@ -18,6 +18,7 @@ export const AlertSmall: FC<IProps> = ({ sx, title, color, icon, children }) => 
 			sx={{
 				alignItems: "flex-start",
 				maxWidth: "400px",
+				width: '90vw',
 				...sx,
 			}}
 			startDecorator={icon}
