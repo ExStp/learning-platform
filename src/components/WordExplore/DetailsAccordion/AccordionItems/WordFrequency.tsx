@@ -1,4 +1,4 @@
-import { CircularProgress, Stack, Typography } from "@mui/joy";
+import { CircularProgress, Stack, Typography, Divider, Card } from "@mui/joy";
 import { wordsAPI } from "../../../../app/services/wordsAPI";
 import { FC } from "react";
 import { AlertSmall } from "../../../alerts/AlertSmall";
@@ -11,7 +11,7 @@ interface IProps {
 
 export const WordFrequency: FC<IProps> = ({ word }) => {
 	const { data, isFetching, isError } = wordsAPI.useFetchFrequencyQuery(word);
-    console.log(data);
+
 	if (isFetching) return <CircularProgress />;
 	if (isError) {
 		return (
@@ -21,9 +21,17 @@ export const WordFrequency: FC<IProps> = ({ word }) => {
 		);
 	}
 	if (data?.frequency) {
+		const { diversity, perMillion, zipf } = data.frequency;
 		return (
-			<Stack spacing={1} direction={{ xs: "column", sm: "row" }} useFlexGap flexWrap="wrap">
-				frequency
+			<Stack
+				direction="row"
+				divider={<Divider orientation="vertical" />}
+				spacing={2}
+				justifyContent="start"
+			>
+				<Card>Diversity:  {diversity ?? "no data"}</Card>
+				<Card>perMillion:  {perMillion ?? "no data"}</Card>
+				<Card>zipf:  {zipf ?? "no data"}</Card>
 			</Stack>
 		);
 	} else {
